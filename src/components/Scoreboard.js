@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Field from "./Field";
+import Field from "./Board";
 
-function Scoreboard() {
-  const [currentScore, setCurrentScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
-
-  const changeCurrentScore = (number) => setCurrentScore(currentScore + number);
-
+function Scoreboard({ currentScore, bestScore }) {
   return (
     <div>
       <div>Score: {currentScore}</div>
       <div>Highscore: {bestScore}</div>
-      <Field changeCurrentScore={changeCurrentScore} />
     </div>
   );
 }

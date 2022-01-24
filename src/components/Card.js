@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 
 function Card(props) {
-  return <li>{props.name}</li>;
+  return (
+    <div value={props.name} id="card" onClick={props.handleClick}>
+      {props.name}
+    </div>
+  );
 }
 
 export default Card;
