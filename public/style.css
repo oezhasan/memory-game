@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "roboto";
+  box-sizing: border-box;
+}
+.App {
+  display: flex;
+  background-color: green;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+
+  height: 100%;
+}
+h1 {
+  font-size: clamp(2rem, 4.5vw, 5rem);
+  color: green;
+  background-color: black;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 40px;
+}
+
+#card {
+  display: flex;
+  flex-direction: column;
+
+  background-color: greenyellow;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem;
+  width: 180px;
+  height: 180px;
+  border: 1px solid black;
+
+  font-size: clamp(0.7rem, 2vw, 1rem);
+}
+
+#card:hover {
+  background-color: lightgreen;
+}
+
+.scoreboard {
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-weight: 1000;
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.scoreboard > * {
+  background-color: white;
+  border: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 20px;
+  width: 25%;
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .board {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #card {
+    gap: 1rem;
+
+    width: 160px;
+    height: 160px;
+  }
+
+  #card > img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media (max-width: 650px) {
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #card {
+    gap: 1rem;
+
+    width: 140px;
+    height: 140px;
+  }
+
+  #card > img {
+    width: 110px;
+    height: 110px;
+  }
+}

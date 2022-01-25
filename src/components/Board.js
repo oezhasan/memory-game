@@ -3,7 +3,7 @@ import Card from "./Card";
 
 function Board(props) {
   return (
-    <div>
+    <div class="board">
       {props.board.map((card) => (
         <Card handleClick={props.handleClick} name={card.name} img={card.img} />
       ))}

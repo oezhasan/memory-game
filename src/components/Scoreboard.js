@@ -3,7 +3,7 @@ import Field from "./Board";
 
 function Scoreboard({ currentScore, bestScore }) {
   return (
-    <div>
+    <div class="scoreboard">
       <div>Score: {currentScore}</div>
       <div>Highscore: {bestScore}</div>
     </div>

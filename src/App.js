@@ -8,12 +8,13 @@ function App() {
   const [board, setBoard] = useState([]);
   const [clickedCards, setClickedCard] = useState([]);
 
-
-  const shuffleBoard= async () =>{
-    const response = await fetch("https://www.breakingbadapi.com/api/character/random?limit=9")
-    const data = await response.json()
-    return data
-  }
+  const shuffleBoard = async () => {
+    const response = await fetch(
+      "https://www.breakingbadapi.com/api/character/random?limit=12"
+    );
+    const data = await response.json();
+    return data;
+  };
 
   const handleClick = (card) => {
     setClickedCard([...clickedCards, card.currentTarget.innerText]);
@@ -24,16 +25,15 @@ function App() {
       changeScore(currentScore + 1);
       if (currentScore >= bestScore) setBestScore(currentScore + 1);
     }
-    console.log(clickedCards)
+    console.log(clickedCards);
   };
 
   const changeScore = (numb) => {
     setCurrentScore(numb);
-
   };
 
   useEffect(() => {
-    const rollBoard = async() => {
+    const rollBoard = async () => {
       const cards = await shuffleBoard();
       setBoard(cards);
     };
@@ -45,7 +45,7 @@ function App() {
     <div className="App">
       <h1>Memory Game</h1>
       <Scoreboard currentScore={currentScore} bestScore={bestScore} />
-      <Board handleClick={handleClick} board={board}  />
+      <Board handleClick={handleClick} board={board} />
     </div>
   );
 }
