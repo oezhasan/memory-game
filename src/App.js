@@ -8,41 +8,34 @@ function App() {
   const [board, setBoard] = useState([]);
   const [clickedCards, setClickedCard] = useState([]);
 
-  const cardNames = [
-    "Java",
-    "Python",
-    "C",
-    "C#",
-    "C++",
-    "JavaScript",
-    "TypeScript",
-    "Ruby",
-    "Elixir",
-  ];
+
+  const shuffleBoard= async () =>{
+    const response = await fetch("https://www.breakingbadapi.com/api/character/random?limit=9")
+    const data = await response.json()
+    return data
+  }
 
   const handleClick = (card) => {
-    setClickedCard([...clickedCards, card.target.innerHTML]);
-    if (clickedCards.indexOf(card.target.innerHTML) !== -1) {
+    setClickedCard([...clickedCards, card.currentTarget.innerText]);
+    if (clickedCards.indexOf(card.currentTarget.innerText) !== -1) {
       changeScore(0);
       setClickedCard([]);
     } else {
       changeScore(currentScore + 1);
       if (currentScore >= bestScore) setBestScore(currentScore + 1);
     }
+    console.log(clickedCards)
   };
+
   const changeScore = (numb) => {
     setCurrentScore(numb);
 
-    console.log(clickedCards);
   };
 
   useEffect(() => {
-    const rollBoard = () => {
-      const newBoard = Array.from({ length: 9 }, () => {
-        return cardNames[Math.floor(Math.random() * 9)];
-      });
-
-      setBoard(newBoard);
+    const rollBoard = async() => {
+      const cards = await shuffleBoard();
+      setBoard(cards);
     };
 
     rollBoard();
@@ -52,7 +45,7 @@ function App() {
     <div className="App">
       <h1>Memory Game</h1>
       <Scoreboard currentScore={currentScore} bestScore={bestScore} />
-      <Board handleClick={handleClick} board={board} cardNames={cardNames} />
+      <Board handleClick={handleClick} board={board}  />
     </div>
   );
 }

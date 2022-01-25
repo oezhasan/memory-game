@@ -5,7 +5,7 @@ function Board(props) {
   return (
     <div>
       {props.board.map((card) => (
-        <Card handleClick={props.handleClick} name={card} />
+        <Card handleClick={props.handleClick} name={card.name} img={card.img} />
       ))}
     </div>
   );
